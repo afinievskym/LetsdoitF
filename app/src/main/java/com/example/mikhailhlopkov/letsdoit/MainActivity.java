@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit;
+package com.example.mikhailhlopkov.letsdoit;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,12 +30,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sergeyvankovich.letsdoit.DB.DBHelper;
-import com.example.sergeyvankovich.letsdoit.DB.Task;
-import com.example.sergeyvankovich.letsdoit.fragments.AboutMeFragment;
-import com.example.sergeyvankovich.letsdoit.fragments.CompletedFragment;
-import com.example.sergeyvankovich.letsdoit.fragments.TasksFragment;
-import com.example.sergeyvankovich.letsdoit.fragments.TodayFragment;
+import com.example.mikhailhlopkov.letsdoit.DB.DBHelper;
+import com.example.mikhailhlopkov.letsdoit.DB.Task;
+import com.example.mikhailhlopkov.letsdoit.R;
+import com.example.mikhailhlopkov.letsdoit.fragments.AboutMeFragment;
+import com.example.mikhailhlopkov.letsdoit.fragments.CompletedFragment;
+import com.example.mikhailhlopkov.letsdoit.fragments.TasksFragment;
+import com.example.mikhailhlopkov.letsdoit.fragments.TodayFragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

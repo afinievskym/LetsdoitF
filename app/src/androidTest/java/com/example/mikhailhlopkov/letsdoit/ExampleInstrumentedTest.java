@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit;
+package com.example.mikhailhlopkov.letsdoit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit.DB;
+package com.example.mikhailhlopkov.letsdoit.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

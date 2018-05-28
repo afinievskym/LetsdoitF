@@ -1,10 +1,11 @@
-package com.example.sergeyvankovich.letsdoit;
+package com.example.mikhailhlopkov.letsdoit;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,35 +15,23 @@ import android.widget.TextView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.example.sergeyvankovich.letsdoit.DB.DBHelper;
-import com.example.sergeyvankovich.letsdoit.DB.Task;
+import com.example.mikhailhlopkov.letsdoit.DB.DBHelper;
+import com.example.mikhailhlopkov.letsdoit.DB.Task;
 
 import java.util.List;
 
-public class ResAdapter extends RecyclerView.Adapter<ResAdapter.MyViewHolder> {
+public class ResCompleteAdapter extends RecyclerView.Adapter<ResCompleteAdapter.MyViewHolder> {
     private List<Task> tasks;
-    private ViewBinderHelper helper;
-    private Context context;
 
-    public ResAdapter(List<Task> tasks, Context context) {
+    public ResCompleteAdapter(List<Task> tasks) {
         this.tasks = tasks;
-        this.helper = new ViewBinderHelper();
-        this.context = context;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.completed_task_card, parent, false);
         final MyViewHolder holder = new MyViewHolder(view);
-
-        holder.complete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                deleteCardView(position);
-            }
-        });
         return holder;
     }
 
@@ -82,9 +71,6 @@ public class ResAdapter extends RecyclerView.Adapter<ResAdapter.MyViewHolder> {
                 break;
         }
 
-        helper.bind(holder.cardView, tasks.get(position).toString());
-        helper.setOpenOnlyOne(true);
-
     }
 
     @Override
@@ -94,8 +80,7 @@ public class ResAdapter extends RecyclerView.Adapter<ResAdapter.MyViewHolder> {
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView taskName;
-        private Button complete;
-        private SwipeRevealLayout cardView;
+        private CardView cardView;
         private TextView date;
         private View important;
 
@@ -103,24 +88,10 @@ public class ResAdapter extends RecyclerView.Adapter<ResAdapter.MyViewHolder> {
             super(itemView);
 
             taskName = itemView.findViewById(R.id.taskName);
-            complete = itemView.findViewById(R.id.completed);
             cardView = itemView.findViewById(R.id.card_view);
             date = itemView.findViewById(R.id.date);
             important = itemView.findViewById(R.id.important);
         }
     }
-    public void deleteCardView(int position){
-        DBHelper helper = new DBHelper(context);
-        SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(DBHelper.TASK_NAME, tasks.get(position).getName());
-        cv.put(DBHelper.YEAR, tasks.get(position).getYear());
-        cv.put(DBHelper.MONTH, tasks.get(position).getMonth());
-        cv.put(DBHelper.DAY, tasks.get(position).getDay());
-        cv.put(DBHelper.IMPORTANT, tasks.get(position).getImportant());
-        database.insert(DBHelper.COMPLETED_TASKS, null, cv);
-        database.delete(DBHelper.TASKS_TABLE, DBHelper.KEY_ID  + "='" + Integer.toString(tasks.get(position).getAbsoluteID()) + "'", null);
-        tasks.remove(position);
-        notifyItemRemoved(position);
-    }
+
 }

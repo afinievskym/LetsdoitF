@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit.fragments;
+package com.example.mikhailhlopkov.letsdoit.fragments;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,10 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sergeyvankovich.letsdoit.DB.DBHelper;
-import com.example.sergeyvankovich.letsdoit.DB.Task;
-import com.example.sergeyvankovich.letsdoit.R;
-import com.example.sergeyvankovich.letsdoit.ResAdapter;
+import com.example.mikhailhlopkov.letsdoit.DB.DBHelper;
+import com.example.mikhailhlopkov.letsdoit.DB.Task;
+import com.example.mikhailhlopkov.letsdoit.R;
+import com.example.mikhailhlopkov.letsdoit.ResAdapter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

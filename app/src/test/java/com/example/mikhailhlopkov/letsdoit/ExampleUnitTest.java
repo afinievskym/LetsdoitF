@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit;
+package com.example.mikhailhlopkov.letsdoit;
 
 import org.junit.Test;
 

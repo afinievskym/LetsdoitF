@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit.DB;
+package com.example.mikhailhlopkov.letsdoit.DB;
 
 public class Task {
     private String name;

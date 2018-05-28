@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit.fragments;
+package com.example.mikhailhlopkov.letsdoit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sergeyvankovich.letsdoit.R;
+import com.example.mikhailhlopkov.letsdoit.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
 
 public class AboutMeFragment extends Fragment {
@@ -21,8 +21,8 @@ public class AboutMeFragment extends Fragment {
                 .setPhoto(R.drawable.titlemain)
                 .setLinksAnimated(true)
                 .setDividerDashGap(13)
-                .setName("Миша")
-                .setSubTitle("About you")
+                .setName("Михаил Хлопков")
+                .setSubTitle("About developer")
                 .setLinksColumnsCount(3)
                 .setBrief("About app")
                 .addEmailLink("afinievskym@gmail.com")

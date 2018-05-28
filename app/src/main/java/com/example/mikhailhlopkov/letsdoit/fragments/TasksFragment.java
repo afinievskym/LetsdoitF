@@ -1,4 +1,4 @@
-package com.example.sergeyvankovich.letsdoit.fragments;
+package com.example.mikhailhlopkov.letsdoit.fragments;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,29 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sergeyvankovich.letsdoit.DB.DBHelper;
-import com.example.sergeyvankovich.letsdoit.DB.Task;
-import com.example.sergeyvankovich.letsdoit.R;
-import com.example.sergeyvankovich.letsdoit.ResAdapter;
-import com.example.sergeyvankovich.letsdoit.ResCompleteAdapter;
+import com.example.mikhailhlopkov.letsdoit.DB.DBHelper;
+import com.example.mikhailhlopkov.letsdoit.DB.Task;
+import com.example.mikhailhlopkov.letsdoit.R;
+import com.example.mikhailhlopkov.letsdoit.ResAdapter;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-public class CompletedFragment extends Fragment {
+public class TasksFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Task> tasks;
+    private ResAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_res_layout, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
+
         tasks = getTasksFromDB();
 
-        recyclerView.setAdapter(new ResCompleteAdapter(tasks));
+        recyclerView.setAdapter(new ResAdapter(tasks, getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
@@ -45,9 +44,7 @@ public class CompletedFragment extends Fragment {
 
         SQLiteDatabase db = helper.getReadableDatabase();
 
-
-
-        Cursor cursor = db.query(DBHelper.COMPLETED_TASKS, null, null, null, null, null, null, null);
+        Cursor cursor = db.query(DBHelper.TASKS_TABLE, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             int nameId = cursor.getColumnIndex(DBHelper.TASK_NAME);
             int yearId = cursor.getColumnIndex(DBHelper.YEAR);
@@ -65,6 +62,18 @@ public class CompletedFragment extends Fragment {
         cursor.close();
         db.close();
         helper.close();
+        return tasks;
+    }
+
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
+    public ResAdapter getAdapter() {
+        return adapter;
+    }
+
+    public List<Task> getTasks() {
         return tasks;
     }
 }
