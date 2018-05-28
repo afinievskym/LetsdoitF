@@ -11,4 +11,5 @@
     <string name="completed">Выполненные задачи</string>
     <string name="about_app">О приложении</string>
     <string name="task_name">Название задачи</string>
+    <string name="title_activity_objective">ObjectiveActivity</string>
 </resources>

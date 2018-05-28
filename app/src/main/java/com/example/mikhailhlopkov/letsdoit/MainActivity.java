@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
         return true;
     }
+    public void AddNotify(){
+
+    }
     private void buildDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         View view_dialog = getLayoutInflater().inflate(R.layout.dialog_new_task, null);
