@@ -1,6 +1,7 @@
 package com.example.mikhailhlopkov.letsdoit;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -125,6 +126,10 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.container, completedFragment);
         } else if (id == R.id.about_me) {
             transaction.replace(R.id.container, aboutMeFragment);
+        }
+        else if (id == R.id.objectivebar){
+            Intent obji = new Intent(MainActivity.this,ObjectiveActivity.class);
+            startActivity(obji);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

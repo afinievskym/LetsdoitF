@@ -15,6 +15,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DAY = "day";
     public static final String KEY_ID = "_id";
     public static final String IMPORTANT = "important";
+    public static final String OBJECTIVE_NAME = "objectiveName";
+    public static final String OBJECTIVE_TABLE = "tableObjective";
+    public static final String YEAR_OB ="year";
+    public static final String MONTH_OB ="month";
+    public static final String DAY_OB ="day";
+    public static final String MOTIV_OB ="motiv";
+    public static final String IMPORTANT_OB = "importantOb";
+
 
 
     public DBHelper(Context context) {
@@ -30,6 +38,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + COMPLETED_TASKS + "(" + KEY_ID + " integer primary key,"
                 + TASK_NAME + " text," + YEAR + " integer," + MONTH + " integer," + IMPORTANT + " text,"
                 + DAY + " integer);");
+        db.execSQL("create table " + OBJECTIVE_TABLE + "(" + KEY_ID + " integer primary key,"
+                + OBJECTIVE_NAME + " text," + YEAR_OB + " text," + MONTH_OB + " text," + DAY_OB + " text,"
+                + MOTIV_OB + IMPORTANT_OB  + " text);");
     }
 
     @Override

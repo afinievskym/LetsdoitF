@@ -16,6 +16,9 @@
             android:id="@+id/completed"
             android:icon="@android:drawable/ic_menu_delete"
             android:title="@string/completed" />
+        <item
+            android:id="@+id/objectivebar"
+            android:title="Цели" />
     </group>
 
     <item android:title="Другое">
