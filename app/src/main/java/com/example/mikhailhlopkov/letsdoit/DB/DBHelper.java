@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String BASE_NAME = "TasksBase";
-    public static final int BASE_VERSION = 5;
+    public static final int BASE_VERSION = 4;
     public static final String TASKS_TABLE = "tableTasks";
     public static final String COMPLETED_TASKS = "completedTasks";
     public static final String TASK_NAME = "taskName";
@@ -46,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TASKS_TABLE);
+        db.execSQL("drop table if exists " + OBJECTIVE_TABLE);
         onCreate(db);
     }
 }

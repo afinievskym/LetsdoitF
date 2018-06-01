@@ -9,6 +9,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -47,12 +49,13 @@ public class ObjectiveActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        ReadFromAdapter();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 BuiltWindow();
-
             }
         });
     }
@@ -72,11 +75,15 @@ public class ObjectiveActivity extends AppCompatActivity {
         final EditText editmotiv = view_dialog.findViewById(R.id.motiv_ob);
 
         final String objective = editObjective.toString();
-        final String years = edityears.toString();
-        final String months = editmonths.toString();
-        final String days = editdays.toString();
+        String years = edityears.toString();
+        String months = editmonths.toString();
+        String days = editdays.toString();
         final String motiv = editmotiv.toString();
         final String[] imp = new String[1];
+
+        if (years.equals("")){years = "0";}
+        if (months.equals("")){months = "0";}
+        if (days.equals("")){days = "0";}
 
         builder.setView(view_dialog);
         final AlertDialog dialog = builder.create();
@@ -86,6 +93,9 @@ public class ObjectiveActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+        final String finalYears = years;
+        final String finalMonths = months;
+        final String finalDays = days;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +113,7 @@ public class ObjectiveActivity extends AppCompatActivity {
                 }
                 String important = imp[0];
 
-                writeToDb(objective, years, months, days, motiv, important);
+                writeToDb(objective, finalYears, finalMonths, finalDays, motiv, important);
                 dialog.dismiss();
 
             }
@@ -125,6 +135,15 @@ public class ObjectiveActivity extends AppCompatActivity {
         db.insert(DBHelper.OBJECTIVE_TABLE, null, cv);
         db.close();
         helper.close();
+    }
+    private void ReadFromAdapter(){
+        RecyclerView rv = (RecyclerView)findViewById(R.id.objective_recycle);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        //Error NullPointer execption
+        ObjectiveAdapter adapter = new ObjectiveAdapter(getApplicationContext());
+        //end error
+        rv.setAdapter(adapter);
     }
 
 }
